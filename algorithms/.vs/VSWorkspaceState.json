@@ -8,8 +8,10 @@
   "ExpandedNodes": [
     "",
     "\\include",
-    "\\src"
+    "\\out",
+    "\\src",
+    "\\test"
   ],
-  "SelectedNode": "\\include\\algo.hpp",
+  "SelectedNode": "\\out\\build",
   "PreviewInSolutionExplorer": false
 }

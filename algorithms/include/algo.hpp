@@ -3,10 +3,12 @@
 
 #include "types.hpp"
 
-int a = 0, b = 1, c = 0;
+
 
 long fibonacci(const int n)
 {
+    int a = 0, b = 1, c = 0;
+
     if (n > 0)
     {
         for (int i = 0; i < n; i++) {
@@ -22,10 +24,19 @@ long fibonacci(const int n)
     }
 }
 
+
 int linear_search(Array * a, const int target)
 {
-    return 0;
+    for (size_t i = 0; i < (*a).len; i++)
+    {
+        if ((*a).data[i] == target)
+        {
+            return i;
+        } 
+    }
+    return -1;
 }
+
 
 long factorial(const int n)
 { 
