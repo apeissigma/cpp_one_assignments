@@ -9,18 +9,22 @@ long fibonacci(const int n)
 {
     int a = 0, b = 1, c = 0;
 
-    if (n > 0)
+    if (n == 0)
     {
-        for (int i = 0; i < n; i++) {
+        return 0;
+    } 
+    else if (n == 1)
+    {
+        return 1;
+    }
+    else
+    {
+        for (int i = 2; i <= n; i++) {
             c = a + b;
             a = b;
             b = c;
         }
         return c;
-    }
-    else
-    {
-        return 0;
     }
 }
 
@@ -31,7 +35,7 @@ int linear_search(Array * a, const int target)
     {
         if ((*a).data[i] == target)
         {
-            return i;
+            return static_cast<int>(i);
         } 
     }
     return -1;
