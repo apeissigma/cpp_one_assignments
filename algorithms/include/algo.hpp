@@ -2,6 +2,8 @@
 #define ALGO_H_
 
 #include "types.hpp"
+#include <iostream>
+#include <string>
 
 
 
