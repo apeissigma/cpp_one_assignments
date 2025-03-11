@@ -9,10 +9,14 @@ unsigned long fibonacci(const unsigned long n)
 {
     unsigned long a = 0, b = 1, c = 0;
 
-    if (n == 0 || n == 1)
+    if (n == 0)
     {
-        return n;
+        return 0;
     } 
+    else if (n == 1)
+    {
+        return 1;
+    }
     else
     {
         for (unsigned long i = 2; i <= n; i++) {
