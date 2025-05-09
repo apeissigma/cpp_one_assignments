@@ -23,8 +23,27 @@ class Cafe {
 
     ~Cafe() { delete this->items; };
 
-    void stock_item(const Item &item) {
-        this->items->push_back(item);
+    void stock_item(const Item &item) 
+    { 
+        for (Item i : *this->item)
+        {
+            if (i == item)
+            {
+                return;
+            }
+            this->items->push_back(item);
+            //ensure there is only one item 
+        }
+    };
+
+    //item lookup
+    Item get_item(ItemType type)
+    {
+        // dereference pntr to access
+        for (Item i : *this->items)
+        {
+            if (i.type == type) { return i; }
+        }
     }
 
     Item get_item(const std::string &name) {
