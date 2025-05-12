@@ -27,9 +27,13 @@ class Currency
                case QUARTER:
                    return 0.25;
                case DIME:
+                   return 0.1;
+               case NICKEL:
                    return 0.05;
                case PENNY:
                    return 0.01;
+               default:
+                   return 0.00f;
        }
     }
 };
@@ -40,6 +44,44 @@ class Register
        std::map<CurrencyType, int> checkout(const std::_Adjust_manually_vector_aligned<Item>& items)
        {
            //initializes map
-           return {};
+           //return {};
+           std::map<CurrencyType, int> changeMap;
+           float total = 0.00f; 
+           float payment = 100.00f; 
+           float change = payment - total; 
+
+           const CurrencyType currencies[] =
+           { BENJAMIN,
+             TWENTY_DOLLAR,
+             TEN_DOLLAR,
+             FIVE_DOLLAR,
+             DOLLAR,
+             QUARTER,
+             DIME,
+             NICKEL,
+             PENNY };
+
+           for (const item : items)
+           {
+               total += item.price; 
+           }
+
+
+           for (CurrencyType currency : currencies)
+           {
+               float currencyValue = Currency::get_currency_value(currency);
+
+               if (change >= currencyValue) 
+               {
+                   int count = static_cast<int>(change / currencyValue);
+                   changeMap[currency] = count;
+                   change = std::fmod(total, currency);
+               }
+
+           }
+
+           return change; 
        }
+
+
 };
