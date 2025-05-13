@@ -49,39 +49,35 @@ class Register
            float total = 0.00f; 
            float payment = 100.00f; 
            float change = payment - total; 
-
-           const CurrencyType currencies[] =
-           { BENJAMIN,
-             TWENTY_DOLLAR,
-             TEN_DOLLAR,
-             FIVE_DOLLAR,
-             DOLLAR,
-             QUARTER,
-             DIME,
-             NICKEL,
-             PENNY };
+           std::string changeString = "Change back: ";
 
            for (const item : items)
            {
                total += item.price; 
            }
 
-
-           for (CurrencyType currency : currencies)
+           //loop through each currency type
+           for (auto const& [currency, value] : changeMap)
            {
+               //get value of currency
                float currencyValue = Currency::get_currency_value(currency);
 
+               //if the amount of change is MORE than the current currencyValue
                if (change >= currencyValue) 
                {
-                   int count = static_cast<int>(change / currencyValue);
-                   changeMap[currency] = count;
-                   change = std::fmod(total, currency);
-               }
+                   //gets current amount of change (not the leftovers)
+                   int currentChange = static_cast<int>(change / currencyValue);
 
+
+                   //how many bills/coins?
+
+
+
+                   //update remaining change to divide total by currencyValue
+                   change = std::fmod(total, currencyValue);
+               }
            }
 
            return change; 
        }
-
-
 };
